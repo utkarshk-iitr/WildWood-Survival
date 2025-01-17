@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://f6kf4sxcbu0v"]
+
+[ext_resource type="Script" path="res://script/bow.gd" id="1_3ku7o"]
+[ext_resource type="Texture2D" uid="uid://co6g5m13chc4u" path="res://art/bow.png" id="1_tdkgp"]
+[ext_resource type="Resource" uid="uid://dk45vkpn3hfrt" path="res://inventory/items/bow.tres" id="2_j4gr4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bw2b1"]
+radius = 11.0454
+
+[node name="bow" type="Node2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_3ku7o")
+item = ExtResource("2_j4gr4")
+
+[node name="sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("1_tdkgp")
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+shape = SubResource("CircleShape2D_bw2b1")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://n7imqgn2pqrf"]
+
+[ext_resource type="Texture2D" uid="uid://btoi8e23fgdmd" path="res://art/sword.png" id="1_7wd5d"]
+[ext_resource type="Script" path="res://script/sword_item.gd" id="1_i80fx"]
+[ext_resource type="Resource" uid="uid://c1qr11ekf3rap" path="res://inventory/items/sword.tres" id="2_vnpnb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xp8gx"]
+radius = 12.0
+
+[node name="sword" type="Node2D"]
+script = ExtResource("1_i80fx")
+item = ExtResource("2_vnpnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7wd5d")
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+shape = SubResource("CircleShape2D_xp8gx")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]

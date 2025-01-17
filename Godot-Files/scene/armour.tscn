@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqe13cvdg3yvf"]
+
+[ext_resource type="Script" path="res://script/armour.gd" id="1_c52pp"]
+[ext_resource type="Texture2D" uid="uid://kun70kk4gmyk" path="res://art/iron_armor.png" id="1_t5dh2"]
+[ext_resource type="Resource" uid="uid://vtdnt85j0p0u" path="res://inventory/items/armour.tres" id="2_xedof"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nc5y1"]
+
+[node name="armour" type="Node2D"]
+script = ExtResource("1_c52pp")
+item = ExtResource("2_xedof")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t5dh2")
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+shape = SubResource("CircleShape2D_nc5y1")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]

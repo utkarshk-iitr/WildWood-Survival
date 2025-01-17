@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b015aiqyrptgr"]
+
+[ext_resource type="Script" path="res://script/arrow.gd" id="1_f7wfu"]
+[ext_resource type="Texture2D" uid="uid://i8nad1or3m6s" path="res://art/icon.svg" id="2_obshf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6231"]
+size = Vector2(6, 25)
+
+[node name="arrow" type="Area2D"]
+script = ExtResource("1_f7wfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.00121931, 0.00056609, 0.000170311, 1)
+position = Vector2(10.3312, 4.4255e-06)
+rotation = 1.5708
+scale = Vector2(0.0174827, 0.159194)
+texture = ExtResource("2_obshf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, -4.03333e-07)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_r6231")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(0.35, 0.4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

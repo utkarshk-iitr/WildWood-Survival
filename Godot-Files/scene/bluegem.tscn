@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyyhlhhs0heau"]
+
+[ext_resource type="Texture2D" uid="uid://c14sttu4vgvn" path="res://art/spr_coin_azu.png" id="1_br8gx"]
+[ext_resource type="Script" path="res://script/bluegem.gd" id="1_oisqd"]
+[ext_resource type="Resource" uid="uid://b0qiior5p7tk6" path="res://inventory/items/bluegem.tres" id="2_4s01x"]
+[ext_resource type="Texture2D" uid="uid://cpt8vanyhpc2k" path="res://art/survivalgame-terrian-cliffs.png" id="3_emuxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsi80"]
+atlas = ExtResource("1_br8gx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytmh0"]
+atlas = ExtResource("1_br8gx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxt2p"]
+atlas = ExtResource("1_br8gx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abp35"]
+atlas = ExtResource("1_br8gx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxnch"]
+atlas = ExtResource("3_emuxm")
+region = Rect2(304, 90, 38, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd2ul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsi80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytmh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxt2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abp35")
+}],
+"loop": true,
+"name": &"bluegem",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxnch")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62gx7"]
+radius = 11.0
+
+[node name="bluegem" type="Node2D"]
+script = ExtResource("1_oisqd")
+item = ExtResource("2_4s01x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dd2ul")
+animation = &"bluegem"
+frame_progress = 0.896901
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+shape = SubResource("CircleShape2D_62gx7")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]

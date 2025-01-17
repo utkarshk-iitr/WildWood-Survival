@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://cr87sc2uc3wy5"]
+
+[ext_resource type="Texture2D" uid="uid://dy7qi3w7n5pat" path="res://art/MonedaD.png" id="1_htk2s"]
+[ext_resource type="Script" path="res://script/valueable.gd" id="1_plrnw"]
+[ext_resource type="Resource" uid="uid://dhxg6pyo2a6sj" path="res://inventory/items/coin.tres" id="2_fjj8v"]
+[ext_resource type="Texture2D" uid="uid://cpt8vanyhpc2k" path="res://art/survivalgame-terrian-cliffs.png" id="3_er7l6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86xyk"]
+atlas = ExtResource("3_er7l6")
+region = Rect2(304, 90, 38, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1k2m"]
+atlas = ExtResource("1_htk2s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ub4p"]
+atlas = ExtResource("1_htk2s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feg77"]
+atlas = ExtResource("1_htk2s")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fofa"]
+atlas = ExtResource("1_htk2s")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wyve"]
+atlas = ExtResource("1_htk2s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_caeg4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86xyk")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1k2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ub4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feg77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fofa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wyve")
+}],
+"loop": true,
+"name": &"yellow-coin",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkavu"]
+radius = 11.0454
+
+[node name="valueable" type="Node2D"]
+script = ExtResource("1_plrnw")
+item = ExtResource("2_fjj8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_caeg4")
+animation = &"empty"
+
+[node name="pickable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable_area"]
+shape = SubResource("CircleShape2D_kkavu")
+
+[connection signal="body_entered" from="pickable_area" to="." method="_on_pickable_area_body_entered"]
+[connection signal="body_exited" from="pickable_area" to="." method="_on_pickable_area_body_exited"]

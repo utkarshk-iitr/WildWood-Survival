@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnkfw8pnj7i6a"]
+
+[ext_resource type="Texture2D" uid="uid://c0mi61lm3ad8s" path="res://art/thunderbolt3.png" id="1_uvgb5"]
+[ext_resource type="Script" path="res://script/thunder.gd" id="1_yq3je"]
+[ext_resource type="Resource" uid="uid://by840dhuxy204" path="res://inventory/items/thunder.tres" id="2_f8gpt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2odbn"]
+
+[node name="thunder" type="Node2D"]
+script = ExtResource("1_yq3je")
+item = ExtResource("2_f8gpt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uvgb5")
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+shape = SubResource("CapsuleShape2D_2odbn")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]

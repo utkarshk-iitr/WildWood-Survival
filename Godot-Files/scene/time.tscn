@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://csh4ioxpoo3ig"]
+
+[ext_resource type="Script" path="res://script/time.gd" id="1_ii6x6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si4nq"]
+bg_color = Color(0.856188, 0.483247, 0.385382, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3r0b"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_l53on"]
+font_size = 100
+
+[node name="time" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 468.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_si4nq")
+script = ExtResource("1_ii6x6")
+
+[node name="minute" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -18.0
+offset_right = 167.0
+offset_bottom = 119.0
+text = "00:"
+label_settings = SubResource("LabelSettings_f3r0b")
+
+[node name="second" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -17.0
+offset_right = 314.0
+offset_bottom = 120.0
+text = "00:"
+label_settings = SubResource("LabelSettings_l53on")
+
+[node name="nanosec" type="Label" parent="Panel"]
+offset_left = 313.0
+offset_top = -17.0
+offset_right = 455.0
+offset_bottom = 120.0
+text = "00"
+label_settings = SubResource("LabelSettings_l53on")

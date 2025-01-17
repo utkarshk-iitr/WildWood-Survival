@@ -1,0 +1,251 @@
+[gd_scene load_steps=16 format=3 uid="uid://nc6laubh62ce"]
+
+[ext_resource type="Script" path="res://script/options_menu.gd" id="1_u8hmf"]
+[ext_resource type="Texture2D" uid="uid://d322n80a42kvw" path="res://art/mainmenubg2.png" id="2_1vfmm"]
+[ext_resource type="Texture2D" uid="uid://5wm136lkhtoy" path="res://art/left.png" id="3_y6fdu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qjcns"]
+texture = ExtResource("2_1vfmm")
+modulate_color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkhp4"]
+bg_color = Color(0.12549, 0.513726, 0.85098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_va4c2"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_t65vs"]
+font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i0lx"]
+bg_color = Color(0.12549, 0.513726, 0.85098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bbgbr"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6n2g"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_1jhk2"]
+font_size = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw8jt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vynk3"]
+bg_color = Color(0.126576, 0.513521, 0.850622, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.14)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68d6s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alsif"]
+bg_color = Color(0.126576, 0.513521, 0.850622, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.14)
+
+[node name="OptionsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8hmf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qjcns")
+
+[node name="AudioOptions" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -437.0
+offset_top = 63.0
+offset_right = -221.0
+offset_bottom = 450.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lkhp4")
+
+[node name="Music" type="Label" parent="AudioOptions"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 26.0
+offset_right = 104.0
+offset_bottom = 68.0
+size_flags_vertical = 3
+text = "Music
+"
+label_settings = SubResource("LabelSettings_va4c2")
+
+[node name="Music_Slider" type="VSlider" parent="AudioOptions"]
+layout_mode = 2
+offset_left = 46.0
+offset_top = 81.0
+offset_right = 62.0
+offset_bottom = 341.0
+size_flags_vertical = 3
+min_value = -30.0
+max_value = 0.0
+
+[node name="SFX" type="Label" parent="AudioOptions"]
+layout_mode = 2
+offset_left = 131.0
+offset_top = 26.0
+offset_right = 403.0
+offset_bottom = 69.0
+size_flags_vertical = 3
+text = "SFX"
+label_settings = SubResource("LabelSettings_t65vs")
+
+[node name="SFX_Slider" type="VSlider" parent="AudioOptions"]
+layout_mode = 2
+offset_left = 144.0
+offset_top = 81.0
+offset_right = 160.0
+offset_bottom = 341.0
+size_flags_vertical = 3
+min_value = -30.0
+max_value = 0.0
+
+[node name="Panel" type="Panel" parent="AudioOptions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 213.0
+offset_top = -218.5
+offset_right = 892.0
+offset_bottom = 298.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2i0lx")
+
+[node name="Head" type="Label" parent="AudioOptions/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.5
+offset_right = 154.5
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Key Bindings"
+label_settings = SubResource("LabelSettings_bbgbr")
+horizontal_alignment = 1
+
+[node name="name" type="Label" parent="AudioOptions/Panel"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 77.0
+offset_right = 277.0
+offset_bottom = 490.0
+text = "Movement
+Inventory
+Eat Food
+Use Jewels
+Attack
+Aim
+Sword
+Bow
+Pause Menu
+"
+label_settings = SubResource("LabelSettings_p6n2g")
+
+[node name="dash" type="Label" parent="AudioOptions/Panel"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 77.0
+offset_right = 346.0
+offset_bottom = 490.0
+text = "----
+----
+----
+----
+----
+----
+----
+----
+----"
+label_settings = SubResource("LabelSettings_1jhk2")
+
+[node name="key" type="Label" parent="AudioOptions/Panel"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 77.0
+offset_right = 647.0
+offset_bottom = 479.0
+text = "W S A D
+I
+E
+J
+Left Click
+Mouse Pointer
+SpaceBar
+Right Click
+Esc
+"
+label_settings = SubResource("LabelSettings_p6n2g")
+
+[node name="ControlOptions" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_right = 225.0
+offset_bottom = 94.0
+
+[node name="back" type="Button" parent="ControlOptions"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+offset_top = 84.0
+offset_right = 458.0
+offset_bottom = 614.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vw8jt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vynk3")
+icon = ExtResource("3_y6fdu")
+icon_alignment = 1
+
+[node name="reset" type="Button" parent="ControlOptions"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 495.0
+offset_right = 388.0
+offset_bottom = 544.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_68d6s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_alsif")
+text = "Reset Stats"
+
+[connection signal="mouse_exited" from="AudioOptions/Music_Slider" to="." method="_on_music_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioOptions/Music_Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="mouse_exited" from="AudioOptions/SFX_Slider" to="." method="_on_sfx_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioOptions/SFX_Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="ControlOptions/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ControlOptions/reset" to="." method="_on_reset_pressed"]

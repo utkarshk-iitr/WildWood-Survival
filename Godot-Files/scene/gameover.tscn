@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf6bd74aqx8ai"]
+
+[ext_resource type="Script" path="res://script/gameover.gd" id="1_gwk8h"]
+[ext_resource type="Texture2D" uid="uid://d322n80a42kvw" path="res://art/mainmenubg2.png" id="1_mc3ds"]
+[ext_resource type="AudioStream" uid="uid://bkgk5jv3ilhs3" path="res://music/gameover.wav" id="3_mioue"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nn506"]
+texture = ExtResource("1_mc3ds")
+modulate_color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm0pl"]
+bg_color = Color(0.12549, 0.513726, 0.85098, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_e6mrb"]
+font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql7jf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tds4q"]
+bg_color = Color(0.126576, 0.513521, 0.850622, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.14)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwk8h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nn506")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 40.0
+offset_right = 135.5
+offset_bottom = 107.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fm0pl")
+text = "Game Over"
+label_settings = SubResource("LabelSettings_e6mrb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -94.0
+offset_right = 315.5
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fm0pl")
+text = "     Score
+     High Score"
+label_settings = SubResource("LabelSettings_e6mrb")
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -94.0
+offset_right = 303.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fm0pl")
+text = " :      00:00:00
+ :      00:00:00"
+label_settings = SubResource("LabelSettings_e6mrb")
+vertical_alignment = 1
+
+[node name="go" type="Panel" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Button" parent="."]
+layout_mode = 2
+offset_left = 389.0
+offset_top = 448.0
+offset_right = 812.0
+offset_bottom = 544.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ql7jf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tds4q")
+text = "Back to Main Menu"
+
+[node name="go" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mioue")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

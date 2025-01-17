@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsrw0ynfryeig"]
+
+[ext_resource type="Script" path="res://script/chicken.gd" id="1_6l8tp"]
+[ext_resource type="Texture2D" uid="uid://difj5ol5pi5hl" path="res://art/ChickenLeg.png" id="1_suwku"]
+[ext_resource type="Resource" uid="uid://ckb504muq71s8" path="res://inventory/items/chicken.tres" id="2_qfpo5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6ak4"]
+
+[node name="chicken" type="Node2D"]
+script = ExtResource("1_6l8tp")
+item = ExtResource("2_qfpo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_suwku")
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+shape = SubResource("CircleShape2D_b6ak4")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]
