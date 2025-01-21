@@ -7,3 +7,4 @@ Utkarsh Kumar
 
 
 > Note : Please check out the Exe-Instructions before running the exe
+(inside Export folder) 
